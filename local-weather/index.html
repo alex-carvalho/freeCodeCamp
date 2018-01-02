@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>freeCodeCamp - Show the Local Weather</title>
+    <meta name="viewport" content="width=device-width, height=device-height">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Poppins'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div id="app">
+    <div class="container-app" :class="main">
+        <h1>Weather From Current Location</h1>
+        <div class="locale" v-if="data">
+            {{data.name}}, {{data.sys ? data.sys.country : ''}}
+        </div>
+        <div class="temperature">
+            {{temperature}}
+            <a @click="toggle">{{isCelsius ? 'C' : 'F'}} °</a>
+        </div>
+        <div class="situation">
+            {{data.weather ? data.weather[0].main : ''}}
+        </div>
+        <div class="icon">
+            <div :class="icon"></div>
+        </div>
+        <footer>
+            by <a href="https://codepen.io/alexcarvalho/" target="_blank">Aléx Carvalho</a>
+        </footer>
+    </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.js'></script>
+<script src="js/index.js"></script>
+
+</body>
+
+</html>
