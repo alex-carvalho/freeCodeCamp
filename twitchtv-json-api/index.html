@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>freeCodeCamp - Twitchtv JSON API</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel='stylesheet prefetch'
+          href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="app">
+    <div class="container">
+        <h1>Twitchtv JSON API</h1>
+        <div class="toggle">
+            <span class="title">Show Offline</span>
+            <app-switch v-model="showOff"></app-switch>
+        </div>
+        <div :class="{loading : loading}"></div>
+        <table class="table users">
+            <tr class="item" key="user._id" v-for="user in filteredUsers">
+                <td><img class="logo" :src="user.logo"/></td>
+                <td>
+                    <a :href=`https://www.twitch.tv/${user.display_name}/profile` target="_blank">
+                        {{user.display_name}}
+                    </a>
+                </td>
+                <td>
+                    <a :href="user.stream.channel.url" v-if="user.stream && user.stream.game" target="_blank">{{
+                        user.stream.game}}</a>
+                    <span v-else>{{ user.stream ? 'ON' : 'OFF' }}</span>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <footer>
+        by <a href="https://codepen.io/alexcarvalho/" target="_blank">Aléx Carvalho</a>
+    </footer>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.js'></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>
