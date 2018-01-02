@@ -1,0 +1,150 @@
+html {
+  font-family: arial, sans-serif;
+  color: #757575;
+}
+
+.container {
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
+  background: white;
+}
+
+.header {
+  display: block;
+  overflow: hidden;
+}
+
+img {
+  margin: 4px 0;
+  width: 200px;
+}
+
+.input-box {
+  display: flex;
+  border: 1px solid #ccc;
+  align-items: center;
+  padding: 2px;
+  margin: 8px 0;
+
+  input {
+    flex-grow: 1;
+    height: 34px;
+    padding: 0 12px;
+    border: none;
+    font-size: 16px;
+    min-width: 1px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  a {
+    min-width: 30px;
+    cursor: pointer;
+
+    i {
+      color: #666666;
+    }
+  }
+}
+
+form {
+  padding-top: 8px;
+}
+
+.result-item {
+  text-align: justify;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 6px rgba(32, 33, 36, 0.3);
+
+  a {
+    text-decoration: none;
+    color: #1967d2;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .url {
+    color: #006621;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 8px 0 4px 0;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
+
+.focus {
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.fade-results-enter-active,
+.fade-results-leave-active {
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-results-enter,
+.fade-results-leave-to {
+  opacity: 0;
+}
+
+.fade-header-leave-active {
+  animation: hide 0.3s;
+}
+
+.fade-header-leave-to {
+  height: 0;
+}
+
+@keyframes hide {
+  from {
+    height: 650px;
+  }
+  to {
+    height: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  html {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 650px;
+  }
+
+  .container-results {
+    margin-left: 150px;
+  }
+
+  .result-item {
+    box-shadow: none;
+
+    .title {
+      font-weight: 600;
+    }
+  }
+
+  .show-background {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wikipedia_svg_logo.svg/300px-Wikipedia_svg_logo.svg.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: 22%;
+    background-attachment: fixed;
+  }
+}
+
+// for display in codepen profile
+@media screen and (max-height: 500px) {
+  img {
+    width: 150px;
+  }
+}

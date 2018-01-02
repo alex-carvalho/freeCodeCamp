@@ -9,7 +9,7 @@
   - JavaScript
   - jQuery
   - Responsive 
-![Screenshot](screenshots/random-quote-machine.png "Screenshot")
+  ![Screenshot](screenshots/random-quote-machine.png "Screenshot")
 
 * Local Weather - [Código](local-weather) - [Demo](https://codepen.io/alexcarvalho/full/WXJjzK/)
   - HTML
@@ -20,4 +20,12 @@
   - Responsive  
   ![Screenshot](screenshots/local-weather.png "Screenshot")
   
-  
+* Wikipedia Viewer - [Código](wikipedia-viewer) - [Demo](https://codepen.io/alexcarvalho/full/XzvbWV/)
+  - HTML
+  - CSS/SCSS
+  - Font Awesome
+  - JavaScript
+  - Vue.js
+  - axios.js
+  - Responsive
+  ![Screenshot](screenshots/wikipedia-viewer.png "Screenshot")

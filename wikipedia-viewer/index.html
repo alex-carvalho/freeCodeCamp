@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>freeCodeCamp: Build a Wikipedia Viewer</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div id="app" :class="[results.length ? 'show-background' : '']">
+    <div class="container" :class="[results.length ? 'container-results' : '']">
+        <transition name="fade-header" mode="out-in">
+      <span class="header" v-if="! results.length">
+          <h1>Wikipedia Viewer</h1>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wikipedia_svg_logo.svg/300px-Wikipedia_svg_logo.svg.png">
+          </img>
+        </span>
+        </transition>
+
+        <form @submit.prevent="search">
+            <div class="input-box" :class="{ focus : inFocus }">
+                <input ref="input" name="search" autofocus placeholder="Search..." autocomplete="off"
+                       v-model="searchValue" @focus="inFocus = true" @blur="inFocus = false"/>
+                <a v-if="searchValue.length" @click="clear" title="Clear">
+                    <i class="fa fa-times"></i>
+                </a>
+                <a @click="search" title="Search">
+                    <i class="fa fa-search"></i>
+                </a>
+                <a href='https://en.wikipedia.org/wiki/Special:Random' target='_blank' title="Random">
+                    <i class="fa fa-random "></i>
+                </a>
+            </div>
+
+        </form>
+        <transition name="fade-results" mode="out-in">
+            <div class="results" v-if="results.length">
+                <result-item key="item.text" :result="item" v-for="item in results">
+                </result-item>
+
+            </div>
+        </transition>
+    </div>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.js'></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

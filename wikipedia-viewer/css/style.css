@@ -1,0 +1,169 @@
+html {
+    font-family: arial, sans-serif;
+    color: #757575;
+}
+
+.container {
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    background: white;
+}
+
+.header {
+    display: block;
+    overflow: hidden;
+}
+
+img {
+    margin: 4px 0;
+    width: 200px;
+}
+
+.input-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    border: 1px solid #ccc;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 2px;
+    margin: 8px 0;
+}
+
+.input-box input {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: 34px;
+    padding: 0 12px;
+    border: none;
+    font-size: 16px;
+    min-width: 1px;
+}
+
+.input-box input:focus {
+    outline: none;
+}
+
+.input-box a {
+    min-width: 30px;
+    cursor: pointer;
+}
+
+.input-box a i {
+    color: #666666;
+}
+
+form {
+    padding-top: 8px;
+}
+
+.result-item {
+    text-align: justify;
+    padding: 8px;
+    margin-bottom: 8px;
+    -webkit-box-shadow: 0 1px 6px rgba(32, 33, 36, 0.3);
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.3);
+}
+
+.result-item a {
+    text-decoration: none;
+    color: #1967d2;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.result-item .url {
+    color: #006621;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 8px 0 4px 0;
+}
+
+.result-item .description {
+    font-size: 0.8rem;
+}
+
+.focus {
+    -webkit-box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.fade-results-enter-active,
+.fade-results-leave-active {
+    -webkit-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+.fade-results-enter,
+.fade-results-leave-to {
+    opacity: 0;
+}
+
+.fade-header-leave-active {
+    -webkit-animation: hide 0.3s;
+    animation: hide 0.3s;
+}
+
+.fade-header-leave-to {
+    height: 0;
+}
+
+@-webkit-keyframes hide {
+    from {
+        height: 650px;
+    }
+    to {
+        height: 0px;
+    }
+}
+
+@keyframes hide {
+    from {
+        height: 650px;
+    }
+    to {
+        height: 0px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 650px;
+    }
+
+    .container-results {
+        margin-left: 150px;
+    }
+
+    .result-item {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .result-item .title {
+        font-weight: 600;
+    }
+
+    .show-background {
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Wikipedia_svg_logo.svg/300px-Wikipedia_svg_logo.svg.png);
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-size: 22%;
+        background-attachment: fixed;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    img {
+        width: 150px;
+    }
+}
