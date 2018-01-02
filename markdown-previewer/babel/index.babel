@@ -1,0 +1,44 @@
+const demo = `# Markdown Previewer\n# Headers\n# H1\n## H2\n#### H4
+\n# Emphasis\nItalics, with *asterisks* or _underscores_.\n\nBold, with **asterisks** or __underscores__.\n\nStrikethrough, ~~Scratch this.~~
+\n# Lists\n1. First ordered list item\n2. Another item
+\n\n* Unordered list can use asterisks\n- Or minuses\n+ Or pluses`;
+
+const Editor = ({value, onChange}) => {
+    const onChangeEvent = event => {
+        onChange(event.target.value);
+    };
+    return <textarea value={value} onChange={onChangeEvent}/>;
+};
+
+const Preview = ({value}) => {
+    const createMarkup = content => {
+        return {__html: marked(content, {sanitize: true})};
+    };
+    return <span dangerouslySetInnerHTML={createMarkup(value)}/>;
+};
+
+class Container extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {value: demo};
+    }
+
+    update(newValue) {
+        this.setState({value: newValue});
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="col editor">
+                    <Editor value={this.state.value} onChange={this.update.bind(this)}/>
+                </div>
+                <div className="col preview">
+                    <Preview value={this.state.value}/>
+                </div>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<Container/>, document.getElementById("root"));

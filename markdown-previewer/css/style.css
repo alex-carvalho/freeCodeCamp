@@ -1,0 +1,52 @@
+.title {
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.col {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.editor {
+    background: #f5f5f5;
+}
+
+textarea {
+    width: 98%;
+    height: calc(100vh - 150px);
+    background: transparent;
+    padding: 10px 0 10px 10px;
+    resize: none;
+    overflow-y: scroll;
+    font-family: monospace;
+    font-size: 1.2rem;
+}
+
+.preview {
+    padding-left: 18px;
+}
+
+@media screen and (min-width: 768px), screen and (max-height: 500px) {
+    body {
+        overflow: hidden;
+    }
+
+    .container {
+        flex-direction: row;
+    }
+
+    .preview {
+        overflow: auto;
+        height: 100vh;
+    }
+
+    textarea {
+        height: calc(100vh - 20px);
+    }
+}
