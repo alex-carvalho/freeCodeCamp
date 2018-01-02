@@ -1,0 +1,118 @@
+body {
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Pacifico;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px rgba(145, 145, 145, 0.5);
+    height: auto;
+    width: 70%;
+    max-width: 400px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card .quote {
+    overflow: hidden;
+}
+
+.card #quoteText {
+    font-family: Pacifico;
+    font-size: 1.3rem;
+    height: auto;
+    max-height: 200px;
+    overflow: auto;
+    transition: opacity 1s ease-out;
+}
+
+.card #quoteAuthor {
+    font-family: "Dancing Script";
+    float: right;
+    font-size: 1rem;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card-buttons a {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    min-width: 2rem;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-buttons a:hover {
+    background-color: #e9e9e9;
+}
+
+.card-buttons #twitter {
+    color: #55acee;
+}
+
+.author {
+    padding-top: 0.8rem;
+}
+
+.author a {
+    font-family: "Dancing Script";
+}
+
+@media screen and (min-width: 550px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .card #quoteText {
+        font-size: 2rem;
+        max-height: 300px;
+    }
+
+    .card #quoteAuthor {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card #quoteText {
+        font-size: 1.5rem;
+    }
+
+    .card #quoteAuthor {
+        font-size: 1.0rem;
+    }
+
+    .author {
+        display: none;
+    }
+}
