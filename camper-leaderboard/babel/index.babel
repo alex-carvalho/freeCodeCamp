@@ -1,0 +1,118 @@
+class Observer {
+    constructor() {
+        this.listeners = {};
+    }
+
+    addListener(event, callback) {
+        (this.listeners[event] = this.listeners[event] || []).push(callback);
+    }
+
+    emitEvent(event, data) {
+        this.listeners[event].forEach(callback => {
+            callback(data);
+        });
+    }
+}
+
+const observer = new Observer();
+
+const UserTable = ({allTime, users}) => {
+    return (
+        <table className="table table-striped">
+            <TableHead allTime={allTime}/>
+            <tbody>
+            {users.map((user, index) => {
+                return <UserRow key={user.username} user={user} index={index}/>;
+            })}
+            </tbody>
+        </table>
+    );
+};
+
+const TableHead = ({allTime}) => {
+    const sortRecents = () => {
+        observer.emitEvent("onSort", false);
+    };
+
+    const sortAll = () => {
+        observer.emitEvent("onSort", true);
+    };
+
+    return (
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Camper Name</th>
+            <th className={allTime ? "" : "sorted"} onClick={sortRecents}>
+                30 days
+            </th>
+            <th className={allTime ? "sorted" : ""} onClick={sortAll}>
+                All time
+            </th>
+        </tr>
+        </thead>
+    );
+};
+
+const UserRow = ({index, user}) => {
+    return (
+        <tr>
+            <td>{index + 1}</td>
+            <td>
+                <a href={`https://www.freecodecamp.com/${user.username}`} target="_blank">
+                    <img src={user.img}/>
+                    <span>{user.username}</span>
+                </a>
+            </td>
+            <td>{user.recent}</td>
+            <td>{user.alltime}</td>
+        </tr>
+    );
+};
+
+const PageFooter = () => {
+    return (
+        <footer>
+            by <a href="https://codepen.io/alexcarvalho/" target="_blank">Aléx Carvalho</a>
+        </footer>
+    )
+}
+
+class Container extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {users: [], allTime: false};
+    }
+
+    loadData() {
+        const baseUrl = "https://fcctop100.herokuapp.com/api/fccusers/top/";
+        axios
+            .get(`${baseUrl}${this.state.allTime ? "alltime" : "recent"}`)
+            .then(response => this.setState({users: response.data}))
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    componentDidMount() {
+        observer.addListener("onSort", allTime => {
+            if (allTime !== this.state.allTime) {
+                this.setState({allTime: allTime}, this.loadData);
+            }
+        });
+
+        this.loadData();
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <h1>freeCodeCamp Leaderboard</h1>
+                <UserTable allTime={this.state.allTime} users={this.state.users}/>
+                <PageFooter/>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<Container/>, document.getElementById("root"));
